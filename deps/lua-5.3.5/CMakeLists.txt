@@ -1,4 +1,4 @@
-message(STATUS "Lua Found")
+message(STATUS "Lua found!")
 add_library(lua
         src/lauxlib.h
         src/lcode.h

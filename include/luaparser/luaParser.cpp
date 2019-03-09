@@ -54,6 +54,29 @@ bool LuaParser::lua_gettostack(const std::string &variableName)
 }
 
 
+void LuaParser::clean()
+{
+    int n = lua_gettop(L);
+    lua_pop(L, n);
+}
+
+
+std::vector<int> LuaParser::getIntVector(const std::string &name)
+{
+    std::vector<int> v;
+    lua_getglobal(L, name.c_str());
+    if (lua_isnil(L, -1)){
+        return v;
+    }
+    lua_pushnil(L);
+    while (lua_next(L, -2)) {
+        v.push_back(static_cast<int>(lua_tonumber(L, -1)));
+        lua_pop(L, -1);
+    }
+    clean();
+    return v;
+}
+
 LuaParser::~LuaParser()
 {
     if (L)

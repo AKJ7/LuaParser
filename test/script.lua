@@ -7,4 +7,4 @@ player = {
     HP = 20,
 -- you can also have comments
 }
-test = 2
+test = "abcd"

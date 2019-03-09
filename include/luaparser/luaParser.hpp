@@ -41,6 +41,8 @@ public:
         return result;
     };
 
+    void clean();
+    std::vector<int> getIntVector(const std::string& name);
     bool lua_gettostack(const std::string& variableName);
 
     template <typename T>
@@ -92,7 +94,5 @@ template<>
 inline std::string LuaParser::lua_getdefault<std::string>() {
     return "null";
 }
-
-
 
 #endif //LUAPARSER_LUAPARSER_HPP
